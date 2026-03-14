@@ -1,14 +1,15 @@
+// backend/src/config/upstash.js
+// Keep the file so your imports don’t break
 import { Ratelimit } from "@upstash/ratelimit";
-//import { Redis } from "@upstash/redis";
-
+import { Redis } from "@upstash/redis";
 import dotenv from "dotenv";
 
 dotenv.config();
 
-// create a ratelimiter that allows 100 requests per minute
-// const ratelimit = new Ratelimit({
-//   redis: Redis.fromEnv(),
-//   limiter: Ratelimit.slidingWindow(100, "60 s"),
-// });
+// Create a dummy ratelimit so nothing crashes
+const ratelimit = {
+  // these methods do nothing
+  limit: async () => ({ success: true }),
+};
 
 export default ratelimit;
